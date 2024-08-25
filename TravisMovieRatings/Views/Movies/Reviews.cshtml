@@ -1,0 +1,95 @@
+﻿@model MoviesViewModel
+
+@{
+    ViewData["Title"] = "Reviews Grid";
+}
+
+<div class="row">
+    <div class="col-md-3 col-lg-2 p-1">
+        <div class="row border border-dark mb-2">
+            @*
+            The following are ideas for additional filter criteria.
+            - Title
+            - My Rating
+            - imdbRating
+            - Year
+            - Actor
+            *@
+            <form asp-action="Reviews" asp-controller="Movies" method="post">
+                <fieldset>
+                    <legend>Filter Criteria</legend>
+
+                    <div class="form-group mb-2">
+                        <label for="Rating">My Rating</label>
+                        <input type="number" class="form-control" id="Rating" name="Rating" min="1" max="10" placeholder="1 to 10">
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="Genre">Genres</label>
+                        <select class="form-control" id="Genre" name="Genres" size="5" multiple>
+                        @foreach (var genre in Model.Genres)
+                        {
+                            <option value="@genre.Name">@genre.Name</option>
+                        }
+                        </select>
+                    </div>
+                    <div class="form-group mb-2">
+                        <label>Genre Filter Criteria</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="GenreFilterMode" id="OrSearch" value="MatchAny" checked>
+                            <label class="form-check-label" for="OrSearch">
+                                Any Selected Genre
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="GenreFilterMode" id="AndSearch" value="MatchAll">
+                            <label class="form-check-label" for="AndSearch">
+                                All Selected Genres
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="row">
+                    <div class="col-6">
+                        <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                    </div>
+                    <div class="col-6">
+                        <button type="reset" class="btn btn-secondary mb-2">Clear</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="row">
+            <a href="@Url.Action("Reviews", "Movies")" class="btn btn-secondary">Show All Entertainment</a>
+        </div>
+    </div>
+    <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <div class="row justify-content-center">
+            @foreach (var item in Model.Movies)
+            {
+                <div class="mb-2 col-sm-6 col-md-3 col-lg-3 col-xl-2 col-xxl-2">
+                    <div class="card p-1 border-0 shadow border-top border-5 rounded">
+                        <a asp-action="Details"
+                           asp-route-movieId="@item.MovieId"
+                           class="growth-container">
+                            <img class="card-img-top grow review-card-image" src="@item.Poster" alt="Movie poster image">
+                        </a>
+                        <div class="card-body pt-2 px-0 pb-1">
+                            <h6 class="card-title text-center text-truncate">@item.Title</h6>
+                            @* <p class="text-center" style="line-height:50%;">@item.Year</p> *@
+
+                            <p class="movie-rating text-center" style="line-height:50%;">@item.Rating</p>
+                            <p class="text-center" style="line-height:100%;">@item.Genre</p>
+                            <div>
+                                <a asp-action="Details"
+                                   asp-route-movieId="@item.MovieId"
+                                   class="btn btn-primary bg-gradient border-0 mt-1 w-100">
+                                    Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

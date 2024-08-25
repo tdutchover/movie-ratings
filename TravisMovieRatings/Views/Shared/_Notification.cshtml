@@ -1,0 +1,29 @@
+﻿@*
+This view displays only one message at a time to the user. To display a message,
+it must be stored in TempData by a controller action method.
+
+TempData is used here because it can maintain data across HTTP requests, which is necessary
+for passing messages between redirects. This persistence across requests is crucial when an
+AJAX call triggers a controller action method that subsequently results in a redirect.
+
+ViewBag is unsuitable for this scenario as it only transfers data from the controller to the
+view within a single request, and doesn't maintain data across redirects or multiple requests.
+*@
+
+@{
+    var successMessage = TempData["SuccessMessage"] as string;
+    var errorMessage = TempData["ErrorMessage"] as string;
+}
+
+@if (!string.IsNullOrEmpty(successMessage))
+{
+    <script>
+        toastr.success('@successMessage');
+    </script>
+}
+else if (!string.IsNullOrEmpty(errorMessage))
+{
+    <script>
+        toastr.error('@errorMessage');
+    </script>
+}

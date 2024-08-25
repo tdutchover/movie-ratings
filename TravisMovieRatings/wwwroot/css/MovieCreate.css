@@ -1,0 +1,39 @@
+﻿body {
+}
+
+.movie-thumbnail-poster-image img {
+    width: 4rem;
+    margin-right: 1rem;
+}
+
+.movie-item-title {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.movie-item-details {
+    margin-bottom: 20px;
+}
+
+#movie-details-poster-image {
+    /*width: 12rem;*/
+    height: auto;
+    max-width: 100%;
+}
+
+#movie-title {
+    font-size:2rem;
+    font-weight: bold;
+}
+
+#rated {
+    font-weight: bold;
+}
+
+.custom-table-row {
+    display: table-row;
+}
+
+.custom-table-row div {
+    display: table-cell;
+}

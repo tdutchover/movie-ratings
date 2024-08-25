@@ -1,0 +1,98 @@
+﻿@model TravisMovieRatings.Models.MovieViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="row">
+    <div class="col-12">
+        <button onclick="goBackToPreviousPage()" class="btn btn-primary">Back</button>
+        <a asp-action="Edit" asp-route-id="@Model.MovieId" class="btn btn-primary ms-3">Edit</a>
+
+        <h1>@Html.DisplayFor(model => model.Title)</h1>
+    </div>
+</div>
+<hr />
+@*<!-- This is for displaying a selected movie -->*@
+<div class="row justify-content-start" id="movie-details-container">
+    <div class="col-sm-12 col-md-12 col-lg-4 mb-3">
+        <dl>
+            <dt>
+                @Html.DisplayNameFor(model => model.Rating)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Rating)
+            </dd>
+            <dt class="mt-4">
+                @Html.DisplayNameFor(model => model.ReviewHeading)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ReviewHeading)
+            </dd>
+            <dt class="mt-4">
+                @Html.DisplayNameFor(model => model.ReviewComments)
+            </dt>
+            <dd>
+                @*@Html.DisplayFor(model => model.ReviewComments)*@
+                <p>@Model.ReviewComments</p>
+            </dd>
+        </dl>
+    </div>
+
+    <div class="col-sm-12 col-md-12 col-lg-8">
+        <div class="row justify-content-start" id="movie-details-container">
+            <div class="col-sm-12 col-md-4 col-lg-4 mb-3">
+                <div class="card">
+                    <a class="growth-container" href="https://www.imdb.com/title/@Model.ImdbId" target="_blank" rel="noreferrer noopener">
+                        <img class="grow" id="movie-details-poster-image" src="@Model.Poster" alt="A movie poster image." />
+                    </a>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-8 col-lg-8">
+                <p>
+                    <!-- Example Content:  2002 • 121 min • PG-13 -->
+                    <span id="year-released">@Model.Year</span>
+                    &#x2022; <!-- Bullet Point -->
+                    <span id="runtime">@Model.Runtime</span>
+                    &#x2022; <!-- Bullet Point -->
+                    <span id="rated">@Model.Rated</span>
+                </p>
+                <p id="genre">@Model.Genre</p>
+
+                <p class="plot">@Model.Plot</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 mb-3">
+                <div class="left-label">@Html.DisplayNameFor(model => model.Director)</div>
+                <div class="right-value mb-1">@Html.DisplayFor(model => model.Director)</div>
+
+                <div class="left-label">@Html.DisplayNameFor(model => model.Actors)</div>
+                <div class="right-value mb-1">@Html.DisplayFor(model => model.Actors)</div>
+
+                <div class="left-label">@Html.DisplayNameFor(model => model.Writer)</div>
+                <div class="right-value mb-1">@Html.DisplayFor(model => model.Writer)</div>
+
+                <div class="left-label">@Html.DisplayNameFor(model => model.Language)</div>
+                <div class="right-value mb-1">@Html.DisplayFor(model => model.Language)</div>
+
+                <div class="left-label">@Html.DisplayNameFor(model => model.Country)</div>
+                <div class="right-value mb-1">@Html.DisplayFor(model => model.Country)</div>
+
+                <div class="left-label">@Html.DisplayNameFor(model => model.Awards)</div>
+                <div class="right-value mb-1">@Html.DisplayFor(model => model.Awards)</div>
+
+                <div class="left-label">@Html.DisplayNameFor(model => model.Type)</div>
+                <div class="right-value">@Html.DisplayFor(model => model.Type)</div>
+
+                <div class="left-label">@Html.DisplayNameFor(model => model.ImdbId)</div>
+                <div class="right-value">@Html.DisplayFor(model => model.ImdbId)</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section head {
+    <link rel="stylesheet" href="~/css/EditReview.css">
+    <link rel="stylesheet" href="~/css/MovieDescription.css">
+}

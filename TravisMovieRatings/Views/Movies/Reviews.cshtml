@@ -1,19 +1,17 @@
 ﻿@model MoviesViewModel
 
 @{
-    ViewData["Title"] = "Reviews Grid";
+    ViewData["Title"] = "Gallery";
 }
 
 <div class="row">
     <div class="col-md-3 col-lg-2 p-1">
         <div class="row border border-dark mb-2">
-            @*
-            The following are ideas for additional filter criteria.
-            - Title
-            - My Rating
-            - imdbRating
-            - Year
-            - Actor
+            @* TODO: Potential Enhancements: Consider adding the following filter criteria.
+                - Title
+                - imdbRating
+                - Year
+                - Owned  (whether the user owns the movie)
             *@
             <form asp-action="Reviews" asp-controller="Movies" method="post">
                 <fieldset>
@@ -75,17 +73,11 @@
                         </a>
                         <div class="card-body pt-2 px-0 pb-1">
                             <h6 class="card-title text-center text-truncate">@item.Title</h6>
-                            @* <p class="text-center" style="line-height:50%;">@item.Year</p> *@
-
-                            <p class="movie-rating text-center" style="line-height:50%;">@item.Rating</p>
+                            @*  TODO: Potential Enhancement: Add a test mode to display search criteria for each movie, only in test mode.
+                            <p class="text-center" style="line-height:50%;">@item.Year</p>
                             <p class="text-center" style="line-height:100%;">@item.Genre</p>
-                            <div>
-                                <a asp-action="Details"
-                                   asp-route-movieId="@item.MovieId"
-                                   class="btn btn-primary bg-gradient border-0 mt-1 w-100">
-                                    Details
-                                </a>
-                            </div>
+                            *@
+                            <p class="movie-rating text-center" style="line-height:50%;">@item.Rating</p>
                         </div>
                     </div>
                 </div>

@@ -75,3 +75,16 @@ footer {
     background-color: black;
     color: white;
 }
+
+/* 
+  Set the nav-link text colors.
+  These selectors increase specificity to override the default 
+  Bootstrap nav-link text color, avoiding the need to use !important.
+*/
+.navbar-nav .nav-item .nav-link {
+    color: aquamarine;
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+    color: gold;
+}

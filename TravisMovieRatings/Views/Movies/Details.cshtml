@@ -5,15 +5,12 @@
 }
 
 <div class="row">
-    <div class="col-12">
-        <button onclick="goBackToPreviousPage()" class="btn btn-primary">Back</button>
-        <a asp-action="Edit" asp-route-id="@Model.MovieId" class="btn btn-primary ms-3">Edit</a>
-
+    <div class="col-12 d-flex justify-content-between align-items-center">
         <h1>@Html.DisplayFor(model => model.Title)</h1>
+        <a asp-action="Edit" asp-route-id="@Model.MovieId" class="btn btn-secondary ms-3">Edit</a>
     </div>
 </div>
 <hr />
-@*<!-- This is for displaying a selected movie -->*@
 <div class="row justify-content-start" id="movie-details-container">
     <div class="col-sm-12 col-md-12 col-lg-4 mb-3">
         <dl>
@@ -33,7 +30,6 @@
                 @Html.DisplayNameFor(model => model.ReviewComments)
             </dt>
             <dd>
-                @*@Html.DisplayFor(model => model.ReviewComments)*@
                 <p>@Model.ReviewComments</p>
             </dd>
         </dl>

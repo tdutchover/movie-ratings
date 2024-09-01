@@ -35,8 +35,8 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-2">
-            <div class="container-fluid">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm bg-dark border-bottom box-shadow mb-2">
+            <div class="container">
                 <a id="brand-all" class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
                     <span id="ten-brand">10</span>
                     <!-- This SVG is a star symbol. Got it from https://icons.getbootstrap.com/icons/star-fill/ -->
@@ -50,16 +50,11 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        @*
                         <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Splash Screen</a>
-                        </li>
-                        *@
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Movies" asp-action="Reviews">Reviews</a>
+                            <a class="nav-link" asp-area="" asp-controller="Movies" asp-action="Reviews">Gallery</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Movies" asp-action="Index">Manage</a>
+                            <a class="nav-link ms-1" asp-area="" asp-controller="Movies" asp-action="Index">Manage Movies</a>
                         </li>
                     </ul>
                 </div>

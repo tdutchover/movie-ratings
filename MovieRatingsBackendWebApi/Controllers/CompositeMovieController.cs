@@ -14,9 +14,9 @@ public class CompositeMovieController : ControllerBase
 {
     private readonly ICompositeMovieService compositeMovieService;
 
-    public CompositeMovieController(ICompositeMovieService compositeMovieRepository)
+    public CompositeMovieController(ICompositeMovieService compositeMovieService)
     {
-        this.compositeMovieService = compositeMovieRepository;
+        this.compositeMovieService = compositeMovieService;
     }
 
     // TODO: Refactor to use a DTO instead of MovieViewModel to better separate the API layer from the UI layer,

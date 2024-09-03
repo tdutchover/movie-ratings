@@ -4,17 +4,11 @@
     ViewData["Title"] = "Edit Review";
 }
 
-@*<div class="row">
-    <div class="col-12">
-        <h1>Edit Review</h1>
-    </div>
-</div>*@
-<div class="row">
+<div class="row mb-2">
     <div class="col-12">
         <h1 id="movie-title">@Model.Title</h1>
     </div>
 </div>
-<hr />
 <div class="row justify-content-start" id="movie-details-container">
     <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
         <form asp-action="Edit">
@@ -40,17 +34,17 @@
                 <input asp-for="Rating" class="form-control" placeholder="Enter a rating from 1 to 10" min="1" max="10" />
                 <span asp-validation-for="Rating" class="text-danger"></span>
             </div>
-            <div class="form-group mt-4">
+            <div class="form-group mt-2">
                 <label asp-for="ReviewHeading" class="control-label"></label>
                 <input asp-for="ReviewHeading" class="form-control" />
                 <span asp-validation-for="ReviewHeading" class="text-danger"></span>
             </div>
-            <div class="form-group mt-4">
+            <div class="form-group mt-2">
                 <label asp-for="ReviewComments" class="control-label"></label>
-                <textarea id="review-comments" asp-for="ReviewComments" class="form-control" rows="8"></textarea>
+                <textarea id="review-comments" asp-for="ReviewComments" class="form-control" rows="5"></textarea>
                 <span asp-validation-for="ReviewComments" class="text-danger"></span>
             </div>
-            <div class="form-group mt-4 mb-3">
+            <div class="form-group mt-2">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
@@ -63,10 +57,10 @@
 
     <div class="col-sm-12 col-md-6 col-lg-8">
         <div class="row justify-content-start" id="movie-details-container">
-            <div class="col-sm-12 col-md-8 col-lg-4 mb-3">
+            <div class="col-sm-12 col-md-4 col-lg-3">
                 <img src="@Model.Poster" id="movie-details-poster-image"/>
             </div>
-            <div class="col-sm-12 col-md-12 col-lg-8">
+            <div class="col-sm-12 col-md-8 col-lg-9">
                 <p>
                     <!-- Example Content:  2002 • 121 min • PG-13 -->
                     <span id="year-released">@Model.Year</span>
@@ -90,19 +84,14 @@
 
                 <div class="left-label">@Html.DisplayNameFor(model => model.Type)</div>
                 <div class="right-value mb-1">@Html.DisplayFor(model => model.Type)</div>
-
-                <!-- Room from bottom of page -->
-                <br />
-                <br />
-                <br />
             </div>
         </div>
     </div>
 </div>
 
 @section head {
-    <link rel="stylesheet" href="~/css/EditReview.css">
-    <link rel="stylesheet" href="~/css/MovieDescription.css">
+    <link rel="stylesheet" href="~/css/Movies/EditReview.css">
+    <link rel="stylesheet" href="~/css/Movies/Shared/MovieDescription.css">
 }
 
 @section Scripts {

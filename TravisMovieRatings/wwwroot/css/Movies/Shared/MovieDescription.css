@@ -1,0 +1,14 @@
+﻿/* The .left-label class is used to style labels that are expected to have a correponding value. */
+.left-label {
+    float: left;
+    text-align: left;
+    width: 6rem;
+    margin-right: 15px; /* Give distance to the matching value */
+}
+
+/* The .right-value class is used to style values that appear to the right of the labels in a form or details section. */
+.right-value {
+    text-align: left;
+}
+
+

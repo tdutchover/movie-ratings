@@ -21,7 +21,7 @@ public static partial class ServiceCollectionExtensions
         // efficient HttpClient management and lifecycle handling, ensuring optimal resource usage and mitigating
         // common issues like DNS changes over time.
 
-        services.AddHttpClient(Constants.HttpClientNameTags.BackendMovieApiClientName, client =>
+        services.AddHttpClient(FrontendConstants.HttpClientNameTags.BackendMovieApiClientName, client =>
         {
             client.BaseAddress = new Uri("http://localhost:5053/api/CompositeMovie/");
 #if DEBUG

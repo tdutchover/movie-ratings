@@ -13,7 +13,7 @@
                 - Year
                 - Owned  (whether the user owns the movie)
             *@
-            <form asp-action="Reviews" asp-controller="Movies" method="post">
+            <form asp-action="Gallery" asp-controller="Movies" method="post">
                 <fieldset>
                     <legend>Filter Criteria</legend>
 
@@ -57,7 +57,7 @@
             </form>
         </div>
         <div class="row">
-            <a href="@Url.Action("Reviews", "Movies")" class="btn btn-secondary">Show All Entertainment</a>
+            <a href="@Url.Action("Gallery", "Movies")" class="btn btn-secondary">Show All Entertainment</a>
         </div>
     </div>
     <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4">

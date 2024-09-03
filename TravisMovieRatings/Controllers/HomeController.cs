@@ -1,10 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿namespace TravisMovieRatings.Controllers;
+
+using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using TravisMovieRatings.Models;
-using TravisMovieRatings.Services;
+using TravisMovieRatings.Shared;
 
-namespace TravisMovieRatings.Controllers;
-
+/// <summary>
+/// Manages the display of the splash screen on the first visit and redirects
+/// a returning user to the landing page.
+/// </summary>
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> logger;
@@ -16,26 +20,50 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        // TODO Implement first-time landing page
-        // IF this is the user's first time visiting my site THEN
-        //      Display splash screen landing page.
-        // ELSE
-        //      Reroute to view movie reviews (i.e. Movies/Reviews.cshtml)
+        if (this.IsFirstVisitForThisBrowser())
+        {
+            this.MarkVisitForThisBrowser();
 
-        // Use a cookie to determine if this is the user's first time visiting this movie rating site.
-        // How to read/write cookies with .net core:   https://www.c-sharpcorner.com/article/asp-net-core-working-with-cookie/
-
-        return this.View();
+            // Display splash screen
+            return this.SplashScreen();
+        }
+        else
+        {
+            return this.RedirectToAction("Gallery", "Movies");
+        }
     }
 
-    public IActionResult About()
+    public IActionResult SplashScreen()
     {
-        return this.View();
+        return this.View("Index");
     }
 
+    /// <remarks>
+    /// [ResponseCache] ensures error pages are not cached to always reflect the current state of the application.
+    /// </remarks>
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
         return this.View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? this.HttpContext.TraceIdentifier });
+    }
+
+    /// <summary>
+    /// Determines if this is the first visit to the app by checking for a specific cookie in the browser.
+    /// </summary>
+    /// <returns>True if this is the first visit by the browser.</returns>
+    private bool IsFirstVisitForThisBrowser()
+    {
+        return !this.Request.Cookies.ContainsKey(FrontendConstants.CookieNames.HasVisitedThisApp);
+    }
+
+    /// <summary>
+    /// Mark the app as visited by setting a specific cookie in the browser.
+    /// </summary>
+    private void MarkVisitForThisBrowser()
+    {
+        this.Response.Cookies.Append(FrontendConstants.CookieNames.HasVisitedThisApp, "true", new CookieOptions
+        {
+            Expires = DateTimeOffset.UtcNow.AddDays(1),
+        });
     }
 }

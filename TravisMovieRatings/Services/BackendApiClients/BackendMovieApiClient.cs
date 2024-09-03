@@ -194,6 +194,6 @@ public class BackendMovieApiClient : IBackendMovieApiClient
 
     private HttpClient CreateHttpClient()
     {
-        return this.httpClientFactory.CreateClient(Constants.HttpClientNameTags.BackendMovieApiClientName);
+        return this.httpClientFactory.CreateClient(FrontendConstants.HttpClientNameTags.BackendMovieApiClientName);
     }
 }

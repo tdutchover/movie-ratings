@@ -116,7 +116,7 @@ function displayMovies(moviesArray) {
         const moviePosterUri = getNormalizedMoviePosterUrl(movie.Poster);
 
         movieCardList += `
-                        <div class="mx-0 mb-2 col-sm-12 col-md-8 col-lg-4">
+                        <div class="mx-0 mb-1 col-sm-12 col-md-8 col-lg-4">
                             <div class="movie-item" data-imdbID="${movie.imdbID}" onclick="movieOnClickHandler(this)">
                                 <div class="movie-thumbnail-poster-image growth-container">
                                     <img class="grow" src="${moviePosterUri}" alt="Thumbnail poster of movie ${movie.Title}, ${movie.Year}"/>

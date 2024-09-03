@@ -64,7 +64,7 @@ public static partial class ServiceCollectionExtensions
         services.AddCors(options =>
         {
             options.AddPolicy(
-                name: Constants.CorsPolicyName_For_TravisMovieRatings_Project,
+                name: BackendConstants.CorsPolicyName_For_TravisMovieRatings_Project,
                 configurePolicy: corsPolicyBuilder =>
                 {
                     const string clientOriginForTravisMovieRatingsProject = "http://localhost:5173";

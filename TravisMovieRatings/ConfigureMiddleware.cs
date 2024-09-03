@@ -33,8 +33,7 @@ public static partial class WebApplicationExtensions
 
         app.MapControllerRoute(
             name: "default",
-            pattern: "{controller=Movies}/{action=Reviews}/{id?}");     // Show reviews page by default
-                                                                        //pattern: "{controller=Home}/{action=Index}/{id?}");       // Original configuration that displayed Home/Index as the default page
+            pattern: "{controller=Home}/{action=Index}/{id?}");
 
         app.Lifetime.ApplicationStopping.Register(() => Debug.WriteLine("ApplicationStopping has been called via Debug."));
         // TODO: Must fix. This doesn't seem to be invoked to flush the Serilog as we desire.

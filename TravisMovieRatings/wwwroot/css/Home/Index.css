@@ -1,0 +1,24 @@
+﻿.splash-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1; /* Ensure the image is behind the text */
+}
+
+.splash-screen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;    /* Ensure the image covers the entire area */
+    object-position: top; /* Ensure the top part of the image is displayed */
+}
+
+.welcome-text {
+    position: relative;
+    z-index: 1; /* Ensure the text is above the image */
+    text-align: left;
+    margin-top: 15vh;
+    color: white;
+}

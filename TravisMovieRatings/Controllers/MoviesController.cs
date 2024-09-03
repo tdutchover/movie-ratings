@@ -32,25 +32,22 @@ public class MoviesController : Controller
         this.moviesService = moviesService;
     }
 
-    // GET: MoviesController
-    // Purpose: Shows a page to manage the list of movies in the database.
-    //          Can perform CRUD operations on this page.
+    // Shows page to manage movies via CRUD operations.
     public async Task<ActionResult> Index()
     {
         try
         {
-            this.logger.LogInformation(LoggingEvents.ListMovies, "List movies");
+            this.logger.LogInformation(LoggingEvents.ManageMovies, "Manage Movies");
             List<MovieViewModel> movies = await this.backendMovieApiClient.GetAllMovieViewModels();
             return this.View(movies);
         }
         catch (Exception ex)
         {
-            return this.NotFound(ex.Message);  // Returns result code 404 - not found
+            return this.NotFound(ex.Message);
         }
     }
 
-    // GET: Movies/Reviews
-    public async Task<ActionResult> Reviews()
+    public async Task<ActionResult> Gallery()
     {
         try
         {
@@ -65,7 +62,7 @@ public class MoviesController : Controller
     }
 
     [HttpPost]
-    public async Task<ActionResult> Reviews([FromForm] MovieFilterFormModel filterCriteria)
+    public async Task<ActionResult> Gallery([FromForm] MovieFilterFormModel filterCriteria)
     {
         try
         {
@@ -79,8 +76,6 @@ public class MoviesController : Controller
         }
     }
 
-    // GET: Movies/Details/5
-    // http://localhost:5173/Movies/Details/3
     public async Task<ActionResult> Details(int movieId)
     {
         try
@@ -98,7 +93,6 @@ public class MoviesController : Controller
         }
     }
 
-    // GET: MoviesController/Create
     public ActionResult Create()
     {
         // This empty model object is used for:
@@ -108,7 +102,6 @@ public class MoviesController : Controller
         return this.View(movieViewModel);
     }
 
-    // POST: MoviesController/Create
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<ActionResult> Create(MovieViewModel movieViewModel)

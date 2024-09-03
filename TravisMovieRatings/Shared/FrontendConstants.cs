@@ -1,7 +1,12 @@
 ﻿namespace TravisMovieRatings.Shared;
 
-public static class Constants
+public static class FrontendConstants
 {
+    public static class CookieNames
+    {
+        public const string HasVisitedThisApp = "HasVisitedThisApp";
+    }
+
     /// <summary>
     /// Contains constants for name tags associated with HttpClient instances.
     /// These name tags are used to identify and configure HttpClient instances

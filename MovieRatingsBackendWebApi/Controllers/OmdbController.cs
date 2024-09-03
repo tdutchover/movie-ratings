@@ -26,14 +26,14 @@ public class OmdbController : ControllerBase
         this.omdbMovieReader = omdbMovieReader;
     }
 
-    [EnableCors(Constants.CorsPolicyName_For_TravisMovieRatings_Project)]
+    [EnableCors(BackendConstants.CorsPolicyName_For_TravisMovieRatings_Project)]
     [HttpGet("movies/{titlePattern}")]
     public async Task<ActionResult<IEnumerable<OmdbMovieShortDetails>>> SearchOmdbMoviesByTitlePattern(string titlePattern)
     {
         return await this.omdbMovieReader.SearchMoviesByTitle(titlePattern);
     }
 
-    [EnableCors(Constants.CorsPolicyName_For_TravisMovieRatings_Project)]
+    [EnableCors(BackendConstants.CorsPolicyName_For_TravisMovieRatings_Project)]
     [HttpGet("movie")]
     public async Task<ActionResult<OmdbMovieDetails>> GetMovieByImdbId([FromQuery][BindRequired] string imdbId)
     {

@@ -1,10 +1,14 @@
-﻿function confirmDeleteMovie(e, deleteMovieUrl) {
+﻿function confirmDeleteMovie(e, deleteMovieUrl, movieName, movieThumbnailUrl) {
     e.preventDefault();
-    //var deleteUrl = e.target.getAttribute('data-url');
 
     Swal.fire({
         title: 'Are you sure?',
-        text: "You won't be able to revert this!",
+        html: `
+            <p>You are about to delete:</p>
+            <h3>${movieName}</h3>
+            <img src="${movieThumbnailUrl}" alt="Movie Thumbnail" style="width: 100px; height: auto;"/>
+            <p>This action cannot be undone!</p>
+        `,
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -13,10 +17,6 @@
         focusCancel: true
     }).then((alertResult) => {
         if (alertResult.isConfirmed) {
-            // Disable all buttons on the page
-            //$('button').prop('disabled', true);
-            //$('a').prop('disabled', true);
-
             $.ajax({
                 url: deleteMovieUrl,
                 type: 'DELETE',

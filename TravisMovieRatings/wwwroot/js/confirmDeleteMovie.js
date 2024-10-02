@@ -6,7 +6,7 @@
         html: `
             <h4>${movieName}</h4>
             <img src="${movieThumbnailUrl}" alt="Movie Thumbnail" class="movie-thumbnail"/>
-            <p class="warning-message-margin-top">This can't be undone.</p>
+            <p class="warning-message-margin-top">Your review will be deleted too.</p>
         `,
         icon: 'warning',
         showCancelButton: true,

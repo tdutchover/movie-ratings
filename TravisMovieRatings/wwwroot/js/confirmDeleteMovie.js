@@ -2,18 +2,17 @@
     e.preventDefault();
 
     Swal.fire({
-        title: 'Are you sure?',
+        title: 'Delete this from your collection?',
         html: `
-            <p>You are about to delete:</p>
-            <h3>${movieName}</h3>
-            <img src="${movieThumbnailUrl}" alt="Movie Thumbnail" style="width: 100px; height: auto;"/>
-            <p>This action cannot be undone!</p>
+            <h4>${movieName}</h4>
+            <img src="${movieThumbnailUrl}" alt="Movie Thumbnail" class="movie-thumbnail"/>
+            <p class="warning-message-margin-top">This can't be undone.</p>
         `,
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!',
+        confirmButtonColor: '#d33',     // red confirm button
+        cancelButtonColor: '#3085d6',   // blue cancel button
+        confirmButtonText: 'Delete',
         focusCancel: true
     }).then((alertResult) => {
         if (alertResult.isConfirmed) {

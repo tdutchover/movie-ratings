@@ -23,9 +23,14 @@ Provides full CRUD (Create, Read, Update, Delete) operations for managing the mo
   - Shows a table of all movies in the user's personal movie collection.
     - The table supports multi-page navigation and sorting by column.
     - The table includes a search function to find movies by title within the personal collection.
-    - The table provides access to the [Edit Review Page](#edit-review-page), [Movie Details Page](#movie-details-page), and the option to delete a movie and its review.
-  
+    - The table provides access to the [Edit Review Page](#edit-review-page), [Movie Details Page](#movie-details-page), and the option to [delete](#delete-confirmation-dialog) a movie and its review.
+
 ![Manage Movies](images/application/pages/Manage-Movies.jpg)
+
+#### Delete Confirmation Dialog
+When the user clicks the Delete button for a specific movie, a confirmation dialog is displayed.
+
+![Delete Movie Confirmation](images/application/pages/Delete-Movie-Confirmation-Dialog.jpg)
 
 ### Add Movie Page
 Allows users to add new movies to their personal collection by selecting a movie, entering a rating, and optionally providing a written review.
@@ -62,8 +67,9 @@ This page allows users to explore details about a selected movie.
 - **Database:** SQL Server
 - **Frontend:** Razor Views, Bootstrap 5, HTML, CSS
   - **Third-Party Libraries:**
-    - [DataTables](https://datatables.net/) provides advanced table features like pagination, sorting, and filtering.
-    - [Toastr](https://codeseven.github.io/toastr/) provides popup notifications.
+    - [DataTables](https://datatables.net/): Provides advanced table features like pagination, sorting, and filtering.
+    - [SweetAlert2](https://sweetalert2.github.io/): Used for customizable dialogs.
+    - [Toastr](https://codeseven.github.io/toastr/): Used for popup notifications.
 - **Backend:**
   - Provides RESTful APIs for database access and secure retrieval of movie data and images from a third-party API.
   - Uses secure configuration for accessing application secrets.

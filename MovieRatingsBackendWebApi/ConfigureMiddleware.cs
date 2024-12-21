@@ -58,13 +58,13 @@ public static partial class WebApplicationExtensions
         app.UseExceptionHandler(DevExceptionHandlerEndpointPath); // Routes exceptions to the minimal API endpoint
         ConfigureExceptionHandlingEndpoint(app);
 
-        // Place `UseCors` before `UseStaticFiles` to apply CORS policies to static file requests, but only if serving static files cross-origin.
-        // Otherwise, place `UseCors` after `UseStaticFiles` to apply CORS policies to all requests.
-        //
-        // The middleware order for UseCors is very important.
-        // See Enable Cross-Origin Requests - UseCors and UseStaticFiles order at: https://learn.microsoft.com/en-us/aspnet/core/security/cors?view=aspnetcore-8.0#usecors-and-usestaticfiles-order
-        // See Middleware order at: https://learn.microsoft.com/en-us/aspnet/core/fundamentals/middleware/?view=aspnetcore-8.0#middleware-order
-        // See Middleware Overview - UseCors and UseStaticFiles order at: https://learn.microsoft.com/en-us/aspnet/core/fundamentals/middleware/?view=aspnetcore-8.0#usecors-and-usestaticfiles-order
+        // Configure Cross-Origin Resource Sharing (CORS) policies.
+        // The order of UseCors in the middleware pipeline is critical:
+        // 1. Place UseCors before components that rely on cross-origin requests, such as controllers or endpoints.
+        // 2. In this backend Web API, UseCors is placed before UseAuthorization to ensure that CORS policies are applied to all incoming requests, including those requiring authorization.
+        // For more information, see:
+        // - See Enable Cross-Origin Requests (CORS) in ASP.NET Core at https://learn.microsoft.com/en-us/aspnet/core/security/cors?view=aspnetcore-9.0
+        // - See Middleware order at: https://learn.microsoft.com/en-us/aspnet/core/fundamentals/middleware/?view=aspnetcore-9.0#middleware-order
         app.UseCors();
     }
 

@@ -25,7 +25,7 @@ public static partial class WebApplicationExtensions
             app.UseExceptionHandler("/Home/Error");
         }
 
-        app.UseStaticFiles();
+        app.MapStaticAssets();
 
         app.UseRouting();
 
@@ -33,7 +33,8 @@ public static partial class WebApplicationExtensions
 
         app.MapControllerRoute(
             name: "default",
-            pattern: "{controller=Home}/{action=Index}/{id?}");
+            pattern: "{controller=Home}/{action=Index}/{id?}")
+            .WithStaticAssets();
 
         app.Lifetime.ApplicationStopping.Register(() => Debug.WriteLine("ApplicationStopping has been called via Debug."));
         // TODO: Must fix. This doesn't seem to be invoked to flush the Serilog as we desire.

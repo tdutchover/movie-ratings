@@ -37,10 +37,17 @@
     <div class="col-sm-12 col-md-12 col-lg-8">
         <div class="row justify-content-start" id="movie-details-container">
             <div class="col-sm-12 col-md-4 col-lg-3 mb-3">
-                <div class="card">
-                    <a class="growth-container" href="https://www.imdb.com/title/@Model.ImdbId" target="_blank" rel="noreferrer noopener">
-                        <img class="grow" id="movie-details-poster-image" src="@Model.Poster" alt="A movie poster image." />
-                    </a>
+                <div class="row justify-content-start mb-1">
+                    <div class="col-12">
+                        <div class="card">
+                            <img id="movie-details-poster-image" src="@Model.Poster" alt="A movie poster image." />
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-start">
+                    <div class="col-12">
+                        <a id="imdb-movie-trailer-link" href="https://www.imdb.com/title/@Model.ImdbId" target="_blank" rel="noreferrer noopener">Show Trailer <i class="bi bi-box-arrow-up-right"></i></a>
+                    </div>
                 </div>
             </div>
             <div class="col-sm-12 col-md-8 col-lg-9">
@@ -82,6 +89,23 @@
         </div>
     </div>
 </div>
+ 
+@section scripts {
+    <script>
+        // BugFix: Hide the movie trailer link when using the Edge browser to avoid a resource
+        // loading failure caused by a permissions error. This error occurs during redirection
+        // to IMDb, resulting in a never-ending loading state in the new browser tab.
+        // In non-debug mode, the user can still use the app normally despite the loading issue.
+        // However, in debug mode, the debugger stops due to an exception in the anchor tag.
+        document.addEventListener('DOMContentLoaded', function () {
+            const movieTrailerLink = document.getElementById('imdb-movie-trailer-link');
+            const isMicrosoftEdgeBrowser = /Edg/.test(navigator.userAgent);
+            if (isMicrosoftEdgeBrowser && movieTrailerLink) {
+                movieTrailerLink.style.display = 'none';
+            }
+        });
+    </script>
+}
 
 @section head {
     <link rel="stylesheet" href="~/css/Movies/Shared/MovieDescription.css">
